@@ -3,6 +3,7 @@ async function main(){
     const incrementButton = document.querySelector('#increment-button');
     const decrementButton = document.querySelector('#decrement-button');
     const refreshButton = document.querySelector('#refresh-button');
+    const resetButton = document.querySelector('#reset-button');
 
 
     let respJSON = await fetch('http://localhost:9001/counter');
@@ -43,9 +44,15 @@ async function main(){
         .catch(error => console.log('ERROR'))
     }
 
+    function reset() {
+        patch(0);
+        refresh();
+    }
+
     incrementButton.addEventListener('click', increment);
     decrementButton.addEventListener('click', decrement);
     refreshButton.addEventListener('click', refresh);
+    resetButton.addEventListener('click', reset);
     countContainer.textContent = countValue;
 }
 main()
