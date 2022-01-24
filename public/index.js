@@ -2,7 +2,6 @@ async function main(){
     const countContainer = document.querySelector('#count-container');
     const incrementButton = document.querySelector('#increment-button');
     const decrementButton = document.querySelector('#decrement-button');
-    const refreshButton = document.querySelector('#refresh-button');
     const resetButton = document.querySelector('#reset-button');
 
 
@@ -29,6 +28,8 @@ async function main(){
         countContainer.textContent = countValue;
     }
 
+    setInterval(refresh, 1000);
+
     async function patch(Val){
         fetch('http://localhost:9001/counter', {
             method: 'PATCH',
@@ -51,7 +52,6 @@ async function main(){
 
     incrementButton.addEventListener('click', increment);
     decrementButton.addEventListener('click', decrement);
-    refreshButton.addEventListener('click', refresh);
     resetButton.addEventListener('click', reset);
     countContainer.textContent = countValue;
 }
